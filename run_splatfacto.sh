@@ -1,15 +1,7 @@
 #!/bin/bash
-exp="${1:-testik}"
+exp_name="${1:-no_pc}"
 
-prune_start="${2:-50000}"
-prune_each="${3:-5000}"
-prune_qant="${4:-0.4}"
-
-data="${5:-external://blender/lego}"
-
-proj_name="${6:-nerfbaselines-test}"
-
-output_name="${proj_name}/${exp}"
+proj_name="${2:-pole}"
 
 #!/bin/bash
 sbatch <<EOT
@@ -17,12 +9,17 @@ sbatch <<EOT
 
 #SBATCH --job-name=tetra_benchmark
 #SBATCH --account=OPEN-29-7
-#SBATCH --partition qgpu_exp
+#SBATCH --partition qgpu
+#SBATCH --time 2-00:00:00
 
 ml --force purge
 
 apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user tetra.sbox \
-  ns-train splatfacto --vis wandb \
+  ns-train splatfacto-big --vis wandb \
+    --project-name $proj_name \
+    --experiment-name $exp_name \
+    \
+    --max_num_iterations 300000 \
     \
     --data pole_data/policko_dataset/
 
