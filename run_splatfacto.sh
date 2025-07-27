@@ -17,7 +17,7 @@ sbatch <<EOT
 
 #SBATCH --job-name=tetra_benchmark
 #SBATCH --account=OPEN-29-7
-#SBATCH --partition qgpu
+#SBATCH --partition qgpu_exp
 #SBATCH --time 2-00:00:00
 
 ml --force purge
