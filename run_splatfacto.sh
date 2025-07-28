@@ -3,6 +3,8 @@ exp_name="${1:-no_pc_more}"
 
 proj_name="${2:-pole}"
 
+method="${2:-splatfacto-big}"
+
 #!/bin/bash
 sbatch <<EOT
 #!/bin/bash
@@ -15,7 +17,7 @@ sbatch <<EOT
 ml --force purge
 
 apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user tetra.sbox \
-  ns-train splatfacto-big --vis wandb \
+  ns-train $method --vis wandb \
     --project-name $proj_name \
     --experiment-name $exp_name \
     \
