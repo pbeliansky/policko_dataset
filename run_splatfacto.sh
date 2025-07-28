@@ -20,7 +20,7 @@ sbatch <<EOT
 
 ml --force purge
 
-apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user tetra.sbox \
+apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user test/tetra.sbox \
   ns-train $method --vis wandb \
     --project-name $proj_name \
     --experiment-name $exp_name \
