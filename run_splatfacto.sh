@@ -21,7 +21,7 @@ apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user t
     \
     --max_num_iterations 300000 \
     \
-    --pipeline.model.max_gs_num 10000000
+    --pipeline.model.max_gs_num 10000000 \
     \
     --data pole_data/policko_dataset/
 
