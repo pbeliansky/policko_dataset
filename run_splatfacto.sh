@@ -7,6 +7,8 @@ method="${3:-splatfacto-big}"
 
 max_gs="${4:-1000000}"
 
+stop_split_at="${5:-15000}"
+
 #!/bin/bash
 sbatch <<EOT
 #!/bin/bash
@@ -26,6 +28,8 @@ apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user t
     --max_num_iterations 300000 \
     \
     --pipeline.model.max_gs_num $max_gs \
+    \
+    --pipeline.model.stop_split_at $stop_split_at \
     \
     --data pole_data/policko_dataset/
 
