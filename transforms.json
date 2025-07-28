@@ -1,5 +1,6 @@
 
 {
+    "ply_file_path": "points.ply",
     "camera_model": "SIMPLE_RADIAL",
     "is_fisheye": false,
     "aabb_scale": 64,
