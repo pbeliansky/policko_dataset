@@ -1,5 +1,5 @@
 #!/bin/bash
-exp_name="${1:-no_pc}"
+exp_name="${1:-no_pc_more}"
 
 proj_name="${2:-pole}"
 
@@ -20,6 +20,8 @@ apptainer exec --userns --writable --nv --no-home --cleanenv --home /home/user t
     --experiment-name $exp_name \
     \
     --max_num_iterations 300000 \
+    \
+    --pipeline.model.max_gs_num 10000000
     \
     --data pole_data/policko_dataset/
 
